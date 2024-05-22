@@ -1,0 +1,7 @@
+const ACTIONS = {
+  INCREASE: "INCREASE",
+  DECREASE: "DECREASE",
+  SEARCH: "SEARCH",
+};
+
+export default ACTIONS;

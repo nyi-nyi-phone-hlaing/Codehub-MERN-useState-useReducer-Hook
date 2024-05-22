@@ -1,13 +1,13 @@
-import { useState } from "react";
+import PropTypes from "prop-types";
+import ACTIONS from "../utils/actions";
 
-const Counter = () => {
-  const [count, setCount] = useState(0);
+const Counter = ({ state, dispatch }) => {
   const decreaseHandler = () => {
-    setCount((prev) => prev - 1);
+    dispatch({ type: ACTIONS.DECREASE });
   };
 
   const increaseHandler = () => {
-    setCount((prev) => prev + 1);
+    dispatch({ type: ACTIONS.INCREASE });
   };
 
   return (
@@ -15,11 +15,16 @@ const Counter = () => {
       <h1>Counter</h1>
       <div className='row'>
         <button onClick={decreaseHandler}>Decrease</button>
-        <span>{count}</span>
+        <span>{state.count}</span>
         <button onClick={increaseHandler}>Increase</button>
       </div>
     </div>
   );
+};
+
+Counter.propTypes = {
+  state: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 export default Counter;
